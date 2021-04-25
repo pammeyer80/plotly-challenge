@@ -17,18 +17,31 @@ function init() {
                 .property("value", sample);
         });
 
-    //Get selected dropdown value
-    var selectedSample = sampleNames[0];
-
-    console.log(selectedSample);
-
-    
+    //Get initial selected dropdown value
+    optionSelected(sampleNames[0]);
 
     });
 };
 
-function optionChanged(selectedSample){
+function optionSelected(selectedSample){
     console.log(selectedSample);
+
+    //Draw graphs and get demo data
+    drawGraph(selectedSample);
+    drawChart(selectedSample);
+    getDemoData(selectedSample);
+
+};
+
+function drawGraph(selectedSample){
+    console.log("Draw Bargraph");
+};
+function drawChart(selectedSample){
+    console.log("Draw Bubble Chart");
+};
+function getDemoData(selectedSample){
+    console.log("Show Demographic Data");
+
 };
 
 init();
