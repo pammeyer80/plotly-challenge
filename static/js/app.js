@@ -10,14 +10,25 @@ function init() {
 
         var sampleNames = d.names;
 
+        
         sampleNames.forEach(sample => {
             dropdown.append("option")
                 .text(sample)
                 .property("value", sample);
         });
 
+    //Get selected dropdown value
+    var selectedSample = sampleNames[0];
+
+    console.log(selectedSample);
+
+    
 
     });
+};
+
+function optionChanged(selectedSample){
+    console.log(selectedSample);
 };
 
 init();
