@@ -84,6 +84,7 @@ function drawBubbleChart(otu_ids, otu_labels, sample_values) {
         text: otu_labels,
         mode: 'markers',
         marker: {
+            color: otu_ids,
             size: sample_values
         }
     }
@@ -102,15 +103,34 @@ function drawBubbleChart(otu_ids, otu_labels, sample_values) {
 function getDemoData(selectedSample){
     console.log(`Show Demographic Data for ${selectedSample}`);
 
-    // d3.json("data/samples.json").then(d => {
+    d3.json("data/samples.json").then(d => {
 
-    //     var metadata = d.metadata;
-    //     var resultArray = metadata.filter(m => m.id == selectedSample);
-    //     var result = resultArray[0];
+        var metadata = d.metadata;
+        var resultArray = metadata.filter(m => m.id == selectedSample);
+        var result = resultArray[0];
 
-    //     console.log(result);
+        console.log(result);
 
-    // });
+        //Object.entries(result).forEach(([key, value]) => console.log(`${key}: ${value}`));
+
+        
+        var panel = d3.select("#sample-metadata");
+        panel.html("");
+
+        var table = panel.append("table");
+
+        Object.entries(result).forEach(([key, value]) => {
+            var row = table.append("tr");
+            row.append("td").text(`${key}: `)
+                .classed("key");
+            row.append("td").text(value);
+        });
+
+
+        console.log(table);
+
+
+    });
 
 };
 
